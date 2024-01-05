@@ -1,0 +1,74 @@
+class Question:
+    def __init__(self, question, answer1, answer2, answer3, answer4, correct_answer):
+        self.question = question
+        self.answer1 = answer1
+        self.answer2 = answer2
+        self.answer3 = answer3
+        self.answer4 = answer4
+        self.correct_answer = correct_answer
+
+    def get_question(self):
+        return self.question
+
+    def get_answers(self):
+        return [self.answer1, self.answer2, self.answer3, self.answer4]
+
+    def get_correct_answer(self):
+        return self.correct_answer
+
+    def set_question(self, question):
+        self.question = question
+
+    def set_answers(self, answer1, answer2, answer3, answer4):
+        self.answer1 = answer1
+        self.answer2 = answer2
+        self.answer3 = answer3
+        self.answer4 = answer4
+
+    def set_correct_answer(self, correct_answer):
+        self.correct_answer = correct_answer
+
+
+# Create a list of 10 Question objects
+questions = [
+    Question("What is the capital of France?", "Berlin", "London", "Paris", "Madrid", 3),
+    Question("Which planet is known as the Red Planet?", "Earth", "Mars", "Jupiter", "Saturn", 2),
+    Question("What is the largest mammal in the world?", "Elephant", "Blue Whale", "Giraffe", "Dolphin", 2),
+    # Add more questions here
+    # ...
+]
+
+# Game Logic
+def run_trivia_game():
+    player1_score = 0
+    player2_score = 0
+
+    for i in range(10):
+        current_question = questions[i]
+        print(f"\nQuestion {i+1}: {current_question.get_question()}")
+        answers = current_question.get_answers()
+        for j in range(4):
+            print(f"{j + 1}. {answers[j]}")
+
+        player1_answer = int(input("Player 1, enter your answer (1-4): "))
+        player2_answer = int(input("Player 2, enter your answer (1-4): "))
+
+        if player1_answer == current_question.get_correct_answer():
+            player1_score += 1
+
+        if player2_answer == current_question.get_correct_answer():
+            player2_score += 1
+
+    print("\nGame Over!")
+    print("Player 1 score:", player1_score)
+    print("Player 2 score:", player2_score)
+
+    if player1_score > player2_score:
+        print("Player 1 wins!")
+    elif player2_score > player1_score:
+        print("Player 2 wins!")
+    else:
+        print("It's a tie!")
+
+# Run the trivia game
+run_trivia_game()

@@ -1,0 +1,100 @@
+class Patient:
+    def __init__(self, first_name, middle_name, last_name, address, city, state, zip_code, phone_number, emergency_contact_name, emergency_contact_phone):
+        self.first_name = first_name
+        self.middle_name = middle_name
+        self.last_name = last_name
+        self.address = address
+        self.city = city
+        self.state = state
+        self.zip_code = zip_code
+        self.phone_number = phone_number
+        self.emergency_contact_name = emergency_contact_name
+        self.emergency_contact_phone = emergency_contact_phone
+
+    # Accessor methods
+    def get_full_name(self):
+        return f"{self.first_name} {self.middle_name} {self.last_name}"
+
+    def get_address(self):
+        return f"{self.address}, {self.city}, {self.state} {self.zip_code}"
+
+    def get_phone_number(self):
+        return self.phone_number
+
+    def get_emergency_contact_info(self):
+        return f"{self.emergency_contact_name}: {self.emergency_contact_phone}"
+
+
+class Procedure:
+    def __init__(self, procedure_name, procedure_date, practitioner_name, procedure_charge):
+        self.procedure_name = procedure_name
+        self.procedure_date = procedure_date
+        self.practitioner_name = practitioner_name
+        self.procedure_charge = procedure_charge
+
+    # Accessor methods
+    def get_procedure_info(self):
+        return f"Procedure: {self.procedure_name}\nDate: {self.procedure_date}\nPractitioner: {self.practitioner_name}\nCharge: {self.procedure_charge:.2f}"
+
+
+# Sample data for Patient
+patient_data = {
+    "first_name": "John",
+    "middle_name": "Doe",
+    "last_name": "Smith",
+    "address": "123 Main St",
+    "city": "Anytown",
+    "state": "CA",
+    "zip_code": "12345",
+    "phone_number": "555-1234",
+    "emergency_contact_name": "Jane Doe",
+    "emergency_contact_phone": "555-5678"
+}
+
+# Create an instance of Patient
+patient = Patient(**patient_data)
+
+# Sample data for Procedures
+procedure_data_1 = {
+    "procedure_name": "Physical Exam",
+    "procedure_date": "Today's date",
+    "practitioner_name": "Dr. Irvine",
+    "procedure_charge": 250.00
+}
+
+procedure_data_2 = {
+    "procedure_name": "X-ray",
+    "procedure_date": "Today's date",
+    "practitioner_name": "Dr. Jamison",
+    "procedure_charge": 500.00
+}
+
+procedure_data_3 = {
+    "procedure_name": "Blood test",
+    "procedure_date": "Today's date",
+    "practitioner_name": "Dr. Smith",
+    "procedure_charge": 200.00
+}
+
+# Create instances of Procedure
+procedure1 = Procedure(**procedure_data_1)
+procedure2 = Procedure(**procedure_data_2)
+procedure3 = Procedure(**procedure_data_3)
+
+# Display patient information
+print("Patient Information:")
+print("Name:", patient.get_full_name())
+print("Address:", patient.get_address())
+print("Phone Number:", patient.get_phone_number())
+print("Emergency Contact:", patient.get_emergency_contact_info())
+print("\nProcedures Information:")
+# Display information about all three procedures
+print(procedure1.get_procedure_info())
+print("\n")
+print(procedure2.get_procedure_info())
+print("\n")
+print(procedure3.get_procedure_info())
+
+# Calculate and display total charges of the three procedures
+total_charges = procedure1.procedure_charge + procedure2.procedure_charge + procedure3.procedure_charge
+print("\nTotal Charges of the Three Procedures:", total_charges)
